@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Status";
+}
+
+<h2>Submit status</h2>
+
+@{
+    bool result;
+    string success = Request.Params["success"];
+    if (bool.TryParse(success, out result) && result)
+    {
+
+        <h3>Success!</h3>
+
+    }
+    else
+    {
+        <h3>Failed!</h3>
+
+    }
+
+}
+
+@Html.ActionLink("Back to form", "Index")
+
+

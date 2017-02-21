@@ -1,0 +1,40 @@
+﻿@model SampleWebApp.Models.ParentIndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title.</h2>
+
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <h4>Change your account settings</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.IndexViewModel.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
+                </dd>
+
+
+            </dl>
+        </div>
+    </div>
+    <div class="panel">
+
+    </div>
+
+
+    @Html.Partial("_UserInfoTablePartial", Model.UserInfoModelCollection)
+</div>
+

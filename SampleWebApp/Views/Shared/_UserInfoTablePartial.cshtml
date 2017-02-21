@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SampleWebApp.Models.UserInfoModel>
+
+
+<div class="row">
+    <p>Forms data:</p>
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NickName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FavoriteDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FavoriteNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FavoriteDayOfWeekId)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NickName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FavoriteDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FavoriteNumber)
+                    </td>
+                    <td>
+                        @{
+                            var selectedDay = item.DaysOfWeek.Where(day => day.Id == item.FavoriteDayOfWeekId).FirstOrDefault();
+                            @Html.DisplayFor(modelItem => selectedDay.Name)
+                        }
+                    </td>
+
+                </tr>
+                            }
+
+        </table>
+    </div>
+</div>
